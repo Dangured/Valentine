@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Will you be my Valentine</title>
+
+<style>
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: pink;
+        margin-top: 50px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 48px;
+        color: darkred;
+        margin-bottom: 30px;
+    }
+
+    button {
+        font-size: 28px;
+        padding: 15px 30px;
+        margin: 20px;
+        cursor: pointer;
+        position: relative;
+        border-radius: 10px;
+        border: none;
+        background-color: #ff69b4;
+        color: white;
+        font-weight: bold;
+    }
+
+    button:active {
+        transform: scale(0.95);
+    }
+
+    #noBtn {
+        position: absolute;
+    }
+
+    #moneciaPic {
+        width: 90%;
+        max-width: 400px;
+        border-radius: 15px;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .heart {
+        position: absolute;
+        font-size: 28px;
+        color: red;
+        animation: floatUp 3s linear forwards;
+        pointer-events: none;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0px); opacity: 1; }
+        100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Will you be my Valentine, Monecia? 💖</h1>
+
+<!-- Image -->
+<img id="moneciaPic" src="https://drive.google.com/uc?export=view&id=1Dok86pOF1A8EllZD1DxnxLfbv5nn2MIH" alt="Monecia's Picture">
+
+<br>
+
+<button onclick="yesClicked()">Yes 💝</button>
+<button id="noBtn">No 😢</button>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+
+    // Move button on hover or touch
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
+
+    function moveButton() {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    function yesClicked() {
+        alert("I LOVE YOU ❤️❤️❤️");
+
+        // Make 100 big hearts from top
+        for (let i = 0; i < 100; i++) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerText = "❤️";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = "-50px"; // start above screen
+            heart.style.fontSize = (30 + Math.random() * 50) + "px"; // huge hearts
+            document.body.appendChild(heart);
+
+            // Remove after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+    }
+</script>
+
+</body>
+</html>
