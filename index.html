@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Will you be my Valentine</title>
+
+<style>
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: pink;
+        margin-top: 50px;
+        overflow: hidden; /* prevents hearts from scrolling out */
+    }
+
+    h1 {
+        font-size: 36px;
+        color: darkred;
+    }
+
+    button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+        position: relative;
+    }
+
+    #noBtn {
+        position: absolute;
+    }
+
+    #moneciaPic {
+        width: 300px; /* adjust as needed */
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+
+    .heart {
+        position: absolute;
+        font-size: 24px;
+        color: red;
+        animation: floatUp 2s linear forwards;
+        pointer-events: none;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0px); opacity: 1; }
+        100% { transform: translateY(-150px); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Will you be my Valentine, Monecia? 💖</h1>
+
+<!-- Image added from Google Drive -->
+<img id="moneciaPic" src="https://drive.google.com/uc?export=view&id=1Dok86pOF1A8EllZD1DxnxLfbv5nn2MIH" alt="Monecia's Picture">
+
+<br>
+
+<button onclick="yesClicked()">Yes 💝</button>
+<button id="noBtn">No 😢</button>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+
+    // Move button on hover (desktop) or touch (iPhone)
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
+
+    function moveButton() {
+        const x = Math.random() * window.innerWidth * 0.8;
+        const y = Math.random() * window.innerHeight * 0.8;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    function yesClicked() {
+        // Show alert
+        alert("YAY!!! ❤️");
+
+        // Make hearts
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerText = "❤️";
+            heart.style.left = (Math.random() * window.innerWidth) + "px";
+            heart.style.top = (window.innerHeight - 100) + "px";
+            heart.style.fontSize = (20 + Math.random() * 20) + "px";
+            document.body.appendChild(heart);
+
+            // Remove after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>
