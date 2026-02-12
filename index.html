@@ -40,8 +40,8 @@
         position: absolute;
     }
 
-    #moneciaPic {
-        width: 90%;
+    #catPic {
+        width: 70%;
         max-width: 400px;
         border-radius: 15px;
         margin-top: 20px;
@@ -53,14 +53,14 @@
     .heart {
         position: absolute;
         font-size: 28px;
-        color: red;
-        animation: floatUp 3s linear forwards;
+        color: purple;
+        animation: floatUp 4s linear forwards;
         pointer-events: none;
     }
 
     @keyframes floatUp {
         0% { transform: translateY(0px); opacity: 1; }
-        100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+        100% { transform: translateY(-900px) rotate(360deg); opacity: 0; }
     }
 </style>
 </head>
@@ -69,8 +69,8 @@
 
 <h1>Will you be my Valentine, Monecia? 💖</h1>
 
-<!-- Image -->
-<img id="moneciaPic" src="https://drive.google.com/uc?export=view&id=1Dok86pOF1A8EllZD1DxnxLfbv5nn2MIH" alt="Monecia's Picture">
+<!-- Cute cat image from web -->
+<img id="catPic" src="https://www.nicepng.com/png/detail/15-154088_kawaii-pusheen-cat-lila-party-heart-tumblr-purple.png" alt="Cute purple cat with heart">
 
 <br>
 
@@ -80,7 +80,6 @@
 <script>
     const noBtn = document.getElementById("noBtn");
 
-    // Move button on hover or touch
     noBtn.addEventListener("mouseover", moveButton);
     noBtn.addEventListener("touchstart", moveButton);
 
@@ -94,20 +93,22 @@
     function yesClicked() {
         alert("I LOVE YOU ❤️❤️❤️");
 
-        // Make 100 big hearts from top
-        for (let i = 0; i < 100; i++) {
+        // Open your Google Drive photos folder
+        window.open("https://drive.google.com/drive/folders/1iMJE03CrHepQL-zusmtBCqztLAlJkyKH", "_blank");
+
+        // Big purple heart explosion!
+        for (let i = 0; i < 200; i++) {
             const heart = document.createElement("div");
             heart.classList.add("heart");
-            heart.innerText = "❤️";
+            heart.innerText = "💜";
             heart.style.left = Math.random() * window.innerWidth + "px";
-            heart.style.top = "-50px"; // start above screen
-            heart.style.fontSize = (30 + Math.random() * 50) + "px"; // huge hearts
+            heart.style.top = "-50px";
+            heart.style.fontSize = (30 + Math.random() * 60) + "px";
             document.body.appendChild(heart);
 
-            // Remove after animation
             setTimeout(() => {
                 heart.remove();
-            }, 3000);
+            }, 4000);
         }
     }
 </script>
